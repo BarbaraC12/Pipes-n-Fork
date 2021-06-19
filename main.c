@@ -238,8 +238,16 @@ int	main(int argc, char **argv, char **envp)
 
 /* PART 8 INTRODUCTION TO FIFO (PIPES)
 */
+/* PART 8 INTRODUCTION TO FIFO (PIPES)
+*/
 int	main(int argc, char **argv){
-	int fd[2];
-	
+	(void)argc;
+	(void)argv;
+	if (mkfifo("fifo1", 0777) == -1) {
+		if (errno != EEXIST) {
+			printf("Can't create file\n");
+			return 1;
+		}
+	}
 	return 0;
 }
